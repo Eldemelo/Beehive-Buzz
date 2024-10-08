@@ -113,61 +113,67 @@ individual, or aggression toward or disparagement of classes of individuals.
 **Consequence**: A permanent ban from any sort of public interaction within the
 community.
 
-
 ## Team Code of Conduct
 
 ### 1. Decisions
-Decisions will be made by **majority vote**. 
+
+Decisions will be made by **majority vote**.
 In the case of a **tie**, the decision will be randomly selected via a third party
 
 ### 2. Attendance
+
 Every member of the team will meet at least **once a week** for the weekly scrum meeting.
 Legitimate **excuses** for missing the weekly meetings are as follows:
-<ul>
-<li>Medical Emergency
-<li>Unforseen, unavoidable circumstances
-<li>Family Emergency
-<li>Pre-discussed conflict
-</ul>
+
+* Medical Emergency
+* Unforseen, unavoidable circumstances
+* Family Emergency
+* Pre-discussed conflict
 
 Members are encouraged to **inform the team in advanced** if they anticipate missing a meeting.
 
 ### 3. Assignments
+
 Assignments will be made by **dividing features into smaller tasks** and splitting such tasks amongst each member of the team.
 In order to ensure work is completed and is completed well, regular check-ins with each member will be performed
 Each member is responsible for **updating their task** on the Scrum board
 
 ### 4. Participation
+
 All **communication** and sharing of information will be done via a **Discord Server** dedicated to this scrum team.
 In order to ensure participation of every member, each member will be expected to **provide feedback during scrum meetings**.
 To meet each member’s strengths and interests, each member will be given the chance to **pick which task(s)** they would like to complete during the sprint.
 Members are encouraged to actively participate in discussions and share their ideas and concerns.
 
 ### 5. Meeting Times and Locations/Mediums
+
 Location and time for meetings will be decided at the beginning of the project start, and will ensure each member has the availability to meet for an allocated amount of time.
 Meetings will be conducted via video conferencing tools if in-person meetings are not feasible.
 
 ### 6. Agenda and Minutes/Notes
+
 Notes will be taken by each member and will be **compiled together** at the end of each discussion.
 Any project-related agenda tasks will be left in Discord as well as added to the Scrum board if appropriate.
 Meeting minutes will be shared with all team members within 24 hours of the meeting.
 
 ### 7. Promptness
+
 Each member is expected to do their best in completing their chosen tasks.
 During the sprint, if they feel they are not going to meet the sprint deadline, they are expected to **reach out** to fellow developers in order to attempt to meet deadlines.
 Members should **communicate any blockers or issues** as soon as they arise.
 
 ### 8. Conversational Courtesies
+
 In order to encourage and reinforce active listening, discussions will be **group-oriented**.
 This will give each member the opportunity to **provide feedback** to the conversation.
 It is expected of each member to maintain a **professional attitude** during the group conversations.
 Respectful and constructive communication is expected at all times.
 
 ### 9. Enforcement / Feedback
+
 To ensure the team enforces its own rules, team members can bring up any **concerns** either during the group conversations or privately with either the Scrum Master or each other.
 Feedback should be given in a **constructive** manner, focusing on the issue and not the person.
 The team will conduct regular retrospectives to discuss what went well, what could be improved, and how to implement changes.
-
 
 ## Attribution
 
