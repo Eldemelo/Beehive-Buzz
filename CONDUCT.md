@@ -1,1 +1,1 @@
-![Screenshot of Ethan's Signature]()
+![Screenshot of Ethan's Signature](https://github.com/Eldemelo/Beehive-Buzz/blob/main/src/signatures/ethan_signature.png)
