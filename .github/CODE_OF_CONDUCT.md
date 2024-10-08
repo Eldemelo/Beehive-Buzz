@@ -198,3 +198,4 @@ For answers to common questions about this code of conduct, see the FAQ at
 ![Screenshot of Ethan's Signature](https://github.com/Eldemelo/Beehive-Buzz/blob/main/src/signatures/ethan_signature.png)
 ![Screenshot of Franky's Signature](https://github.com/Eldemelo/Beehive-Buzz/blob/main/src/signatures/franky_signature.png)
 ![Screenshot of Zoe's Signature](https://github.com/Eldemelo/Beehive-Buzz/blob/main/src/signatures/zoe_signature.png)
+![Screenshot of Brandon's Signature](https://github.com/Eldemelo/Beehive-Buzz/blob/main/src/signatures/brandon_signature.png)
