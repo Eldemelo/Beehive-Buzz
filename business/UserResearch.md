@@ -1,0 +1,4 @@
+ - Observation 4:
+   - Significant interest in Community features
+   - Supporting data: Second-highest number of "I'd love to use" responses, also a high number of "I could use this" responses.
+   - Team Action: Communities should be a high priority for our MVP
