@@ -73,3 +73,23 @@ We'll split the users 50/50 using firebase's capabilities, and test how frequent
 ### Variations
 
 The two possible variations for the location of the user profile button will be A: in the hotbar at the bottom of the screen with a generic user icon, or B: at the top left of the screen with the user's profile picture as the icon.
+
+# Franky Araujo 
+
+## A/B Test
+Change Login screen spacing & padding 
+
+### User Story Number
+US2: Account Login
+
+### Metrics
+Engagement. Measure How often users login.
+
+### Hypothesis
+We want to see if the layout of the login screen has an affect on how often users use the app.
+
+### Experiment
+50% of users will be able to see the test version. The text fields will have more spacing  and the app logo will be centered. The users' frewuency of logins will be tracked between the two versions to evaluate if one version leads to more logins/ use of the app. We will use Firebase Analytics to make a variable that counts how many times a user logs in and how long they spend on the app.
+
+### Variations
+There will be the original variation and the test variation, with added spacing and a centered logo.
