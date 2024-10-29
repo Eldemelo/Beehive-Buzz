@@ -6,7 +6,7 @@ https://docs.google.com/presentation/d/1mC2QXKMn1SFNsurnxRa_i1DmB5VBXfBqUc-nJzoK
 
 ### Happiness
 
-* 
+*  Net Promoter Score (Reviews) - Before logging out, ask new users to rate the app from 1 out of 5 stars. 
 
 ### Engagement
 
