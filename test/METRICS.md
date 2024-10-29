@@ -10,7 +10,7 @@ https://docs.google.com/presentation/d/1mC2QXKMn1SFNsurnxRa_i1DmB5VBXfBqUc-nJzoK
 
 ### Engagement
 
-* Number of logins - Track when a user opens the app and logs in via a parameter that increases each time somebody logs in
+* Number of active daily users - Tracks how many users log in and use the app daily
 * Average Engagement per active user - already available on Firebase
 
 ### Adoption
