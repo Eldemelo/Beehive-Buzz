@@ -1,8 +1,15 @@
 # Metrics Design
+
 https://docs.google.com/presentation/d/1mC2QXKMn1SFNsurnxRa_i1DmB5VBXfBqUc-nJzoK9UQ/edit?usp=sharing
 
+## Heart framework metrics
+
+### Engagement
+
 * Number of logins - Track when a user opens the app and logs in via a parameter that increases each time somebody logs in
-* Number of active daily users - Every time a unique user logs in from 00:00 to 23:59, a parameter will be incremented by 1, and every day the value will be saved and averaged out
+
+### Adoption
+
 * Number of new accounts - Every time a user signs up, increment a counter saved in firebase
 * Create/update profile - Increment a counter stored in Firebase when a user creates or updates their profile.
 
