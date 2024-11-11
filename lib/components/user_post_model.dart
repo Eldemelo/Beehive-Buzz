@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'homepage_widget.dart' show HomepageWidget;
+import 'user_post_widget.dart' show UserPostWidget;
 import 'package:flutter/material.dart';
 
-class HomepageModel extends FlutterFlowModel<HomepageWidget> {
+class UserPostModel extends FlutterFlowModel<UserPostWidget> {
   @override
   void initState(BuildContext context) {}
 

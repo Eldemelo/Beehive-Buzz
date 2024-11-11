@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -67,18 +68,21 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const MainFeedWidget() : const LoginPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? const NavBarPage()
+          : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const MainFeedWidget() : const LoginPageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? const NavBarPage()
+              : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'LoginPage',
@@ -88,17 +92,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Homepage',
           path: '/homepage',
-          builder: (context, params) => const HomepageWidget(),
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Homepage')
+              : const HomepageWidget(),
         ),
         FFRoute(
-          name: 'OnBoarding',
-          path: '/onBoarding',
-          builder: (context, params) => const OnBoardingWidget(),
+          name: 'Events',
+          path: '/events',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Events')
+              : const EventsWidget(),
         ),
         FFRoute(
-          name: 'MainFeed',
-          path: '/mainFeed',
-          builder: (context, params) => const MainFeedWidget(),
+          name: 'New-Post',
+          path: '/newPost',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'New-Post')
+              : const NewPostWidget(),
+        ),
+        FFRoute(
+          name: 'Profile-Page',
+          path: '/profilePage',
+          builder: (context, params) => const ProfilePageWidget(),
+        ),
+        FFRoute(
+          name: 'Settings',
+          path: '/settings',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Settings')
+              : const SettingsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -284,14 +307,8 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+                  child: LinearProgressIndicator(
+                    color: FlutterFlowTheme.of(context).primary,
                   ),
                 )
               : page;

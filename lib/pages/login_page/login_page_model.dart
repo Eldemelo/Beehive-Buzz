@@ -31,7 +31,6 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   // State field(s) for SignUp_Password widget.
   FocusNode? signUpPasswordFocusNode;
   TextEditingController? signUpPasswordTextController;
-  late bool signUpPasswordVisibility;
   String? Function(BuildContext, String?)?
       signUpPasswordTextControllerValidator;
   String? _signUpPasswordTextControllerValidator(
@@ -50,7 +49,6 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   // State field(s) for SignUp_ConfirmPassword widget.
   FocusNode? signUpConfirmPasswordFocusNode;
   TextEditingController? signUpConfirmPasswordTextController;
-  late bool signUpConfirmPasswordVisibility;
   String? Function(BuildContext, String?)?
       signUpConfirmPasswordTextControllerValidator;
   String? _signUpConfirmPasswordTextControllerValidator(
@@ -85,7 +83,6 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   // State field(s) for Login_Password widget.
   FocusNode? loginPasswordFocusNode;
   TextEditingController? loginPasswordTextController;
-  late bool loginPasswordVisibility;
   String? Function(BuildContext, String?)? loginPasswordTextControllerValidator;
   String? _loginPasswordTextControllerValidator(
       BuildContext context, String? val) {
@@ -103,14 +100,11 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   @override
   void initState(BuildContext context) {
     signUpEmailTextControllerValidator = _signUpEmailTextControllerValidator;
-    signUpPasswordVisibility = false;
     signUpPasswordTextControllerValidator =
         _signUpPasswordTextControllerValidator;
-    signUpConfirmPasswordVisibility = false;
     signUpConfirmPasswordTextControllerValidator =
         _signUpConfirmPasswordTextControllerValidator;
     loginEmailTextControllerValidator = _loginEmailTextControllerValidator;
-    loginPasswordVisibility = false;
     loginPasswordTextControllerValidator =
         _loginPasswordTextControllerValidator;
   }

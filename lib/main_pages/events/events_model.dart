@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'main_feed_widget.dart' show MainFeedWidget;
+import 'events_widget.dart' show EventsWidget;
 import 'package:flutter/material.dart';
 
-class MainFeedModel extends FlutterFlowModel<MainFeedWidget> {
+class EventsModel extends FlutterFlowModel<EventsWidget> {
   @override
   void initState(BuildContext context) {}
 
