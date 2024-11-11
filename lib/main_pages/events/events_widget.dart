@@ -1,26 +1,27 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'homepage_model.dart';
-export 'homepage_model.dart';
+import 'events_model.dart';
+export 'events_model.dart';
 
-class HomepageWidget extends StatefulWidget {
-  const HomepageWidget({super.key});
+class EventsWidget extends StatefulWidget {
+  const EventsWidget({super.key});
 
   @override
-  State<HomepageWidget> createState() => _HomepageWidgetState();
+  State<EventsWidget> createState() => _EventsWidgetState();
 }
 
-class _HomepageWidgetState extends State<HomepageWidget> {
-  late HomepageModel _model;
+class _EventsWidgetState extends State<EventsWidget> {
+  late EventsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomepageModel());
+    _model = createModel(context, () => EventsModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Events'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -44,7 +45,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
           title: Text(
             'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Inter Tight',
+                  fontFamily: 'Lexend',
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
