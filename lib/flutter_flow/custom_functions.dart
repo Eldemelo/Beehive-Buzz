@@ -22,33 +22,29 @@ double getLongitude(LatLng coords) {
   return longitude;
 }
 
-List<DocumentReference> fetchPost(
-  List<DocumentReference> postList,
-  LatLng userLocation,
+List<UserPostsRecord> fetchPostV2(
+  List<UserPostsRecord> postList,
+  LatLng? userLocation,
 ) {
-  List<DocumentReference> fetchedPosts = [];
-  for (DocumentReference docRef in postList) {
-    // Retrieve the post document from Firestore
-    docRef.get().then((docSnapshot) {
-      if (docSnapshot.exists) {
-        // Extract the 'postCoords' field from the document
-        LatLng postLocation = LatLng(
-          docSnapshot.get('postCoords').latitude,
-          docSnapshot.get('postCoords').longitude,
-        );
-
-        // Check the distance between the user and the post
-        if (calculateDistance(userLocation, postLocation)! <= 50) {
-          // Add the post to the result list if it's within range
-          fetchedPosts.add(docRef);
-        }
-      }
-    });
+  List<UserPostsRecord> outputPosts = [];
+  if (userLocation == null) {
+    userLocation = LatLng(0, 0);
   }
-  return fetchedPosts;
+  LatLng postLocation;
+  for (UserPostsRecord post in postList) {
+    //distance logic here
+    if (post.postCoords != null) {
+      postLocation = post.postCoords!;
+      if (calculateDistance(userLocation, postLocation)! <= 50) {
+        outputPosts.add(post);
+      }
+    }
+  }
+
+  return outputPosts;
 }
 
-double? calculateDistance(
+double calculateDistance(
   LatLng coord1,
   LatLng coord2,
 ) {
