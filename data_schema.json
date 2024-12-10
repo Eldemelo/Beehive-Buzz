@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "bio": { "type": "string" },
+          "birth_date": { "type": "string", "format": "date-time" },
+          "created_time": { "type": "string", "format": "date-time" },
+          "display_name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "hometown": { "type": "string" },
+          "interested_events": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^/events/[A-Za-z0-9]+$" }
+          },
+          "liked_posts": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^/user_posts/[A-Za-z0-9]+$" }
+          },
+          "photo_url": { "type": "string", "format": "uri" },
+          "uid": { "type": "string" },
+          "username": { "type": "string" }
+        },
+        "required": [
+          "bio",
+          "birth_date",
+          "created_time",
+          "display_name",
+          "email",
+          "hometown",
+          "interested_events",
+          "liked_posts",
+          "photo_url",
+          "uid",
+          "username"
+        ]
+      }
+    },
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "display_name": { "type": "string" },
+          "display_photo_url": { "type": "string", "format": "uri" },
+          "like_users": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^/users/[A-Za-z0-9]+$" }
+          },
+          "likes": { "type": "integer", "minimum": 0 },
+          "postCity": { "type": "string" },
+          "postCoords": {
+            "type": "object",
+            "properties": {
+              "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+              "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+            },
+            "required": ["latitude", "longitude"]
+          },
+          "postLat": { "type": "number", "minimum": -90, "maximum": 90 },
+          "postLong": { "type": "number", "minimum": -180, "maximum": 180 },
+          "postState": { "type": "string" },
+          "postUser": { "type": "string", "pattern": "^/users/[A-Za-z0-9]+$" },
+          "post_body": { "type": "string" },
+          "post_time": { "type": "string", "format": "date-time" }
+        },
+        "required": [
+          "display_name",
+          "display_photo_url",
+          "like_users",
+          "likes",
+          "postCity",
+          "postCoords",
+          "postLat",
+          "postLong",
+          "postState",
+          "postUser",
+          "post_body",
+          "post_time"
+        ]
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "created_time": { "type": "string", "format": "date-time" },
+          "displayPhotoURL": { "type": "string", "format": "uri" },
+          "display_name": { "type": "string" },
+          "eventUser": { "type": "string", "pattern": "^/users/[A-Za-z0-9]+$" },
+          "event_description": { "type": "string" },
+          "event_lat": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" },
+          "event_long": { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" },
+          "event_location": { "type": "string" },
+          "event_name": { "type": "string" },
+          "event_postalcode": { "type": "string" },
+          "event_state": { "type": "string" },
+          "event_street": { "type": "string" },
+          "event_time": { "type": "string", "format": "date-time" },
+          "event_town": { "type": "string" },
+          "interestedUsers": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^/users/[A-Za-z0-9]+$" }
+          },
+          "num_interested": { "type": "integer", "minimum": 0 },
+          "username": { "type": "string" }
+        },
+        "required": [
+          "created_time",
+          "displayPhotoURL",
+          "display_name",
+          "eventUser",
+          "event_description",
+          "event_lat",
+          "event_long",
+          "event_location",
+          "event_name",
+          "event_postalcode",
+          "event_state",
+          "event_street",
+          "event_time",
+          "event_town",
+          "interestedUsers",
+          "num_interested",
+          "username"
+        ]
+      }
+    }
+  },
+  "required": ["users", "posts", "events"]
+}
