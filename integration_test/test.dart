@@ -2,13 +2,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:beehive_buzz/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:beehive_buzz/flutter_flow/flutter_flow_radio_button.dart';
 import 'package:beehive_buzz/flutter_flow/flutter_flow_widgets.dart';
 import 'package:beehive_buzz/flutter_flow/flutter_flow_theme.dart';
 import 'package:beehive_buzz/index.dart';
 import 'package:beehive_buzz/main.dart';
 import 'package:beehive_buzz/flutter_flow/flutter_flow_util.dart';
 
+import 'package:provider/provider.dart';
 import 'package:beehive_buzz/backend/firebase/firebase_config.dart';
 import 'package:beehive_buzz/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,12 +25,18 @@ void main() async {
 
   setUp(() async {
     await authManager.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
   });
 
   testWidgets('Golden-Path-Create-Post', (WidgetTester tester) async {
     _overrideOnError();
 
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
 
     await tester.tap(find.byKey(ValueKey('LoginTab_k8wn')));
     await tester.enterText(

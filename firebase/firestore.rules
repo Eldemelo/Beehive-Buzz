@@ -11,20 +11,27 @@ service cloud.firestore {
     match /user_posts/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if false;
+      allow write: if true;
       allow delete: if true;
     }
 
     match /user_posts/{parent}/comments/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if false;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if request.auth != null;
     }
 
     match /{path=**}/comments/{document} {
       allow read: if true;
     }
 
+
+    match /events/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if false;
+    }
   }
 }

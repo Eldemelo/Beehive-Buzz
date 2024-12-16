@@ -76,6 +76,16 @@ class UsersRecord extends FirestoreRecord {
   List<DocumentReference> get comments => _comments ?? const [];
   bool hasComments() => _comments != null;
 
+  // "interested_events" field.
+  List<DocumentReference>? _interestedEvents;
+  List<DocumentReference> get interestedEvents => _interestedEvents ?? const [];
+  bool hasInterestedEvents() => _interestedEvents != null;
+
+  // "prev_username" field.
+  String? _prevUsername;
+  String get prevUsername => _prevUsername ?? '';
+  bool hasPrevUsername() => _prevUsername != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -89,6 +99,8 @@ class UsersRecord extends FirestoreRecord {
     _username = snapshotData['username'] as String?;
     _likedPosts = getDataList(snapshotData['liked_posts']);
     _comments = getDataList(snapshotData['comments']);
+    _interestedEvents = getDataList(snapshotData['interested_events']);
+    _prevUsername = snapshotData['prev_username'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -135,6 +147,7 @@ Map<String, dynamic> createUsersRecordData({
   String? hometown,
   String? bio,
   String? username,
+  String? prevUsername,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -148,6 +161,7 @@ Map<String, dynamic> createUsersRecordData({
       'hometown': hometown,
       'bio': bio,
       'username': username,
+      'prev_username': prevUsername,
     }.withoutNulls,
   );
 
@@ -171,7 +185,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.bio == e2?.bio &&
         e1?.username == e2?.username &&
         listEquality.equals(e1?.likedPosts, e2?.likedPosts) &&
-        listEquality.equals(e1?.comments, e2?.comments);
+        listEquality.equals(e1?.comments, e2?.comments) &&
+        listEquality.equals(e1?.interestedEvents, e2?.interestedEvents) &&
+        e1?.prevUsername == e2?.prevUsername;
   }
 
   @override
@@ -187,7 +203,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.bio,
         e?.username,
         e?.likedPosts,
-        e?.comments
+        e?.comments,
+        e?.interestedEvents,
+        e?.prevUsername
       ]);
 
   @override
