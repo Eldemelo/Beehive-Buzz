@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,33 +16,45 @@ class CommentsRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "comment" field.
-  String? _comment;
-  String get comment => _comment ?? '';
-  bool hasComment() => _comment != null;
+  // "body" field.
+  String? _body;
+  String get body => _body ?? '';
+  bool hasBody() => _body != null;
 
-  // "user" field.
-  DocumentReference? _user;
-  DocumentReference? get user => _user;
-  bool hasUser() => _user != null;
+  // "comment_user" field.
+  DocumentReference? _commentUser;
+  DocumentReference? get commentUser => _commentUser;
+  bool hasCommentUser() => _commentUser != null;
 
-  // "date" field.
-  DateTime? _date;
-  DateTime? get date => _date;
-  bool hasDate() => _date != null;
+  // "comment_likes" field.
+  List<DocumentReference>? _commentLikes;
+  List<DocumentReference> get commentLikes => _commentLikes ?? const [];
+  bool hasCommentLikes() => _commentLikes != null;
 
-  // "uid" field.
-  String? _uid;
-  String get uid => _uid ?? '';
-  bool hasUid() => _uid != null;
+  // "comment_time" field.
+  DateTime? _commentTime;
+  DateTime? get commentTime => _commentTime;
+  bool hasCommentTime() => _commentTime != null;
+
+  // "comment_city" field.
+  String? _commentCity;
+  String get commentCity => _commentCity ?? '';
+  bool hasCommentCity() => _commentCity != null;
+
+  // "comment_state" field.
+  String? _commentState;
+  String get commentState => _commentState ?? '';
+  bool hasCommentState() => _commentState != null;
 
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
-    _comment = snapshotData['comment'] as String?;
-    _user = snapshotData['user'] as DocumentReference?;
-    _date = snapshotData['date'] as DateTime?;
-    _uid = snapshotData['uid'] as String?;
+    _body = snapshotData['body'] as String?;
+    _commentUser = snapshotData['comment_user'] as DocumentReference?;
+    _commentLikes = getDataList(snapshotData['comment_likes']);
+    _commentTime = snapshotData['comment_time'] as DateTime?;
+    _commentCity = snapshotData['comment_city'] as String?;
+    _commentState = snapshotData['comment_state'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -84,17 +97,19 @@ class CommentsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createCommentsRecordData({
-  String? comment,
-  DocumentReference? user,
-  DateTime? date,
-  String? uid,
+  String? body,
+  DocumentReference? commentUser,
+  DateTime? commentTime,
+  String? commentCity,
+  String? commentState,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'comment': comment,
-      'user': user,
-      'date': date,
-      'uid': uid,
+      'body': body,
+      'comment_user': commentUser,
+      'comment_time': commentTime,
+      'comment_city': commentCity,
+      'comment_state': commentState,
     }.withoutNulls,
   );
 
@@ -106,15 +121,24 @@ class CommentsRecordDocumentEquality implements Equality<CommentsRecord> {
 
   @override
   bool equals(CommentsRecord? e1, CommentsRecord? e2) {
-    return e1?.comment == e2?.comment &&
-        e1?.user == e2?.user &&
-        e1?.date == e2?.date &&
-        e1?.uid == e2?.uid;
+    const listEquality = ListEquality();
+    return e1?.body == e2?.body &&
+        e1?.commentUser == e2?.commentUser &&
+        listEquality.equals(e1?.commentLikes, e2?.commentLikes) &&
+        e1?.commentTime == e2?.commentTime &&
+        e1?.commentCity == e2?.commentCity &&
+        e1?.commentState == e2?.commentState;
   }
 
   @override
-  int hash(CommentsRecord? e) =>
-      const ListEquality().hash([e?.comment, e?.user, e?.date, e?.uid]);
+  int hash(CommentsRecord? e) => const ListEquality().hash([
+        e?.body,
+        e?.commentUser,
+        e?.commentLikes,
+        e?.commentTime,
+        e?.commentCity,
+        e?.commentState
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is CommentsRecord;

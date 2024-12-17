@@ -2,13 +2,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:beehive_buzz/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:beehive_buzz/flutter_flow/flutter_flow_radio_button.dart';
 import 'package:beehive_buzz/flutter_flow/flutter_flow_widgets.dart';
 import 'package:beehive_buzz/flutter_flow/flutter_flow_theme.dart';
 import 'package:beehive_buzz/index.dart';
 import 'package:beehive_buzz/main.dart';
 import 'package:beehive_buzz/flutter_flow/flutter_flow_util.dart';
 
+import 'package:provider/provider.dart';
 import 'package:beehive_buzz/backend/firebase/firebase_config.dart';
 import 'package:beehive_buzz/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,21 +25,63 @@ void main() async {
 
   setUp(() async {
     await authManager.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
   });
 
-  testWidgets('Golden-Path-Create-Post', (WidgetTester tester) async {
+  testWidgets('US4-GoldenPath', (WidgetTester tester) async {
     _overrideOnError();
 
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(
+        entryPage: LoginPageWidget(),
+      ),
+    ));
 
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.tap(find.byKey(ValueKey('LoginTab_k8wn')));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.enterText(
-        find.byKey(ValueKey('Login_Email_483x')), 'frankyaraujo@uri.edu');
+        find.byKey(ValueKey('Login_Email_483x')), 'ethan.demelo2000@gmail.com');
     await tester.enterText(
-        find.byKey(ValueKey('Login_Password_00xj')), 'frankyaraujo@uri.edu');
+        find.byKey(ValueKey('Login_Password_00xj')), 'Edem1323!');
     await tester.tap(find.byKey(ValueKey('Login_Button_udfc')));
-    await tester.pumpAndSettle(Duration(milliseconds: 3000));
-    expect(find.text('New Post'), findsNothing);
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(ValueKey('Button_v4uz')));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
+    await tester.enterText(
+        find.byKey(ValueKey('PostBody_02v4')), 'This is a robo test!!!');
+    await tester.tap(find.byKey(ValueKey('New-Post_hkvj')));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 10000));
+  });
+
+  testWidgets('US1 Create Account', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
+
+    await tester.pumpAndSettle();
+    await tester.enterText(
+        find.byKey(ValueKey('SignUp_Email_ptei')), 'newtestemail@gmail.com');
+    await tester.enterText(
+        find.byKey(ValueKey('SignUp_Password_70vb')), 'coolpassword12');
+    await tester.enterText(
+        find.byKey(ValueKey('SignUp_ConfirmPassword_5an3')), 'coolpassword12');
+    await tester.tap(find.byKey(ValueKey('SignUp_Button_u7bb')));
+    await tester.pumpAndSettle();
+    expect(find.text('Home'), findsWidgets);
   });
 }
 

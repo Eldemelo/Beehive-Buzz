@@ -40,6 +40,50 @@ class GetCityStateCall {
         response,
         r'''$.address.state''',
       ));
+  static String? town(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.address.town''',
+      ));
+}
+
+class ReverseSearchCityStateCall {
+  static Future<ApiCallResponse> call({
+    String? street = '1540 Broadway',
+    String? city = 'New York',
+    String? state = 'NY',
+    String? country = 'United States',
+    String? postalcode = '10036',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'reverseSearchCityState',
+      apiUrl:
+          'https://geocode.maps.co/search?&api_key=67238049290e5139875437hxsb5d13a',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {
+        'street': street,
+        'city': city,
+        'state': state,
+        'country': country,
+        'postalcode': postalcode,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? latitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].lat''',
+      ));
+  static String? longitude(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].lon''',
+      ));
 }
 
 class ApiPagingParams {

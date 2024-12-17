@@ -1,4 +1,4 @@
-package com.mycompany.beehivebuzz
+package com.uricsc305.beehivebuzz
 
 import io.flutter.embedding.android.FlutterActivity
 
