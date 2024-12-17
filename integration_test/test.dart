@@ -52,14 +52,16 @@ void main() async {
     await tester.tap(find.byKey(ValueKey('Login_Button_udfc')));
     await tester.pumpAndSettle();
     await tester.pumpAndSettle(Duration(milliseconds: 5000));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.tap(find.byKey(ValueKey('Button_v4uz')));
     await tester.pumpAndSettle();
     await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(ValueKey('PostBody_02v4')), 'This is a robo test!!!');
-    await tester.tap(find.byKey(ValueKey('Button_i4o9')));
+    await tester.tap(find.byKey(ValueKey('New-Post_hkvj')));
     await tester.pumpAndSettle();
-    await tester.pumpAndSettle(Duration(milliseconds: 5000));
+    await tester.pumpAndSettle(Duration(milliseconds: 10000));
   });
 
   testWidgets('US1 Create Account', (WidgetTester tester) async {
