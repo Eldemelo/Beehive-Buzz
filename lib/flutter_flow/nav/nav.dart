@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -107,14 +107,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
         FFRoute(
           name: 'New-Post',
           path: '/newPost',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'New-Post')
-              : const NewPostWidget(),
+          builder: (context, params) => const NewPostWidget(),
         ),
         FFRoute(
-          name: 'Profile-Page',
-          path: '/profilePage',
-          builder: (context, params) => const ProfilePageWidget(),
+          name: 'EditProfilePage',
+          path: '/editProfilePage',
+          builder: (context, params) => const EditProfilePageWidget(),
         ),
         FFRoute(
           name: 'Settings',
@@ -122,6 +120,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Settings')
               : const SettingsWidget(),
+        ),
+        FFRoute(
+          name: 'User-Profile-Page',
+          path: '/userProfilePage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'User-Profile-Page')
+              : const UserProfilePageWidget(),
+        ),
+        FFRoute(
+          name: 'New-Event',
+          path: '/newEvent',
+          builder: (context, params) => const NewEventWidget(),
+        ),
+        FFRoute(
+          name: 'comments_page',
+          path: '/commentsPage',
+          asyncParams: {
+            'originalPost':
+                getDoc(['user_posts'], UserPostsRecord.fromSnapshot),
+          },
+          builder: (context, params) => CommentsPageWidget(
+            originalPost: params.getParam(
+              'originalPost',
+              ParamType.Document,
+            ),
+            numComments: params.getParam(
+              'numComments',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'manageAccount',
+          path: '/manageAccount',
+          builder: (context, params) => const ManageAccountWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -306,9 +339,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: LinearProgressIndicator(
-                    color: FlutterFlowTheme.of(context).primary,
+              ? Container(
+                  color: Colors.black,
+                  child: Image.asset(
+                    'assets/images/image.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

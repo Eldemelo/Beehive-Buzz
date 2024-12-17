@@ -55,20 +55,10 @@ class UserPostsRecord extends FirestoreRecord {
   String get mediaUrl => _mediaUrl ?? '';
   bool hasMediaUrl() => _mediaUrl != null;
 
-  // "post_likes" field.
-  int? _postLikes;
-  int get postLikes => _postLikes ?? 0;
-  bool hasPostLikes() => _postLikes != null;
-
   // "email" field.
   String? _email;
   String get email => _email ?? '';
   bool hasEmail() => _email != null;
-
-  // "created_time" field.
-  DateTime? _createdTime;
-  DateTime? get createdTime => _createdTime;
-  bool hasCreatedTime() => _createdTime != null;
 
   // "postUser" field.
   DocumentReference? _postUser;
@@ -100,10 +90,20 @@ class UserPostsRecord extends FirestoreRecord {
   String get postState => _postState ?? '';
   bool hasPostState() => _postState != null;
 
-  // "likes" field.
-  List<DocumentReference>? _likes;
-  List<DocumentReference> get likes => _likes ?? const [];
-  bool hasLikes() => _likes != null;
+  // "postLat" field.
+  double? _postLat;
+  double get postLat => _postLat ?? 0.0;
+  bool hasPostLat() => _postLat != null;
+
+  // "postLong" field.
+  double? _postLong;
+  double get postLong => _postLong ?? 0.0;
+  bool hasPostLong() => _postLong != null;
+
+  // "userLikes" field.
+  List<DocumentReference>? _userLikes;
+  List<DocumentReference> get userLikes => _userLikes ?? const [];
+  bool hasUserLikes() => _userLikes != null;
 
   void _initializeFields() {
     _uid = snapshotData['uid'] as String?;
@@ -114,16 +114,16 @@ class UserPostsRecord extends FirestoreRecord {
     _photoUrl = snapshotData['photo_url'] as String?;
     _containsMedia = snapshotData['contains_media'] as bool?;
     _mediaUrl = snapshotData['media_url'] as String?;
-    _postLikes = castToType<int>(snapshotData['post_likes']);
     _email = snapshotData['email'] as String?;
-    _createdTime = snapshotData['created_time'] as DateTime?;
     _postUser = snapshotData['postUser'] as DocumentReference?;
     _displayPhotoUrl = snapshotData['display_photo_url'] as String?;
     _comments = getDataList(snapshotData['comments']);
     _postCoords = snapshotData['postCoords'] as LatLng?;
     _postCity = snapshotData['postCity'] as String?;
     _postState = snapshotData['postState'] as String?;
-    _likes = getDataList(snapshotData['likes']);
+    _postLat = castToType<double>(snapshotData['postLat']);
+    _postLong = castToType<double>(snapshotData['postLong']);
+    _userLikes = getDataList(snapshotData['userLikes']);
   }
 
   static CollectionReference get collection =>
@@ -169,14 +169,14 @@ Map<String, dynamic> createUserPostsRecordData({
   String? photoUrl,
   bool? containsMedia,
   String? mediaUrl,
-  int? postLikes,
   String? email,
-  DateTime? createdTime,
   DocumentReference? postUser,
   String? displayPhotoUrl,
   LatLng? postCoords,
   String? postCity,
   String? postState,
+  double? postLat,
+  double? postLong,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -188,14 +188,14 @@ Map<String, dynamic> createUserPostsRecordData({
       'photo_url': photoUrl,
       'contains_media': containsMedia,
       'media_url': mediaUrl,
-      'post_likes': postLikes,
       'email': email,
-      'created_time': createdTime,
       'postUser': postUser,
       'display_photo_url': displayPhotoUrl,
       'postCoords': postCoords,
       'postCity': postCity,
       'postState': postState,
+      'postLat': postLat,
+      'postLong': postLong,
     }.withoutNulls,
   );
 
@@ -216,16 +216,16 @@ class UserPostsRecordDocumentEquality implements Equality<UserPostsRecord> {
         e1?.photoUrl == e2?.photoUrl &&
         e1?.containsMedia == e2?.containsMedia &&
         e1?.mediaUrl == e2?.mediaUrl &&
-        e1?.postLikes == e2?.postLikes &&
         e1?.email == e2?.email &&
-        e1?.createdTime == e2?.createdTime &&
         e1?.postUser == e2?.postUser &&
         e1?.displayPhotoUrl == e2?.displayPhotoUrl &&
         listEquality.equals(e1?.comments, e2?.comments) &&
         e1?.postCoords == e2?.postCoords &&
         e1?.postCity == e2?.postCity &&
         e1?.postState == e2?.postState &&
-        listEquality.equals(e1?.likes, e2?.likes);
+        e1?.postLat == e2?.postLat &&
+        e1?.postLong == e2?.postLong &&
+        listEquality.equals(e1?.userLikes, e2?.userLikes);
   }
 
   @override
@@ -238,16 +238,16 @@ class UserPostsRecordDocumentEquality implements Equality<UserPostsRecord> {
         e?.photoUrl,
         e?.containsMedia,
         e?.mediaUrl,
-        e?.postLikes,
         e?.email,
-        e?.createdTime,
         e?.postUser,
         e?.displayPhotoUrl,
         e?.comments,
         e?.postCoords,
         e?.postCity,
         e?.postState,
-        e?.likes
+        e?.postLat,
+        e?.postLong,
+        e?.userLikes
       ]);
 
   @override
