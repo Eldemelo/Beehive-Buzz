@@ -723,6 +723,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                               ].divide(const SizedBox(height: 10.0)),
                             ),
                             FFButtonWidget(
+                              key: const ValueKey('Button_i4o9'),
                               onPressed: () async {
                                 logFirebaseEvent(
                                     'NEW_POST_PAGE_POST_BUZZ_BTN_ON_TAP');

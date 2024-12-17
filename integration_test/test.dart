@@ -41,15 +41,25 @@ void main() async {
     ));
 
     await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.tap(find.byKey(ValueKey('LoginTab_k8wn')));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(ValueKey('Login_Email_483x')), 'ethan.demelo2000@gmail.com');
     await tester.enterText(
         find.byKey(ValueKey('Login_Password_00xj')), 'Edem1323!');
+    await tester.tap(find.byKey(ValueKey('Login_Button_udfc')));
+    await tester.pumpAndSettle();
     await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.tap(find.byKey(ValueKey('Button_v4uz')));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.enterText(
-        find.byKey(ValueKey('PostBody_02v4')), 'This is a robo test');
+        find.byKey(ValueKey('PostBody_02v4')), 'This is a robo test!!!');
+    await tester.tap(find.byKey(ValueKey('Button_i4o9')));
+    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(milliseconds: 5000));
   });
 
   testWidgets('US1 Create Account', (WidgetTester tester) async {
