@@ -40,6 +40,7 @@ void main() async {
       ),
     ));
 
+    await tester.pumpAndSettle();
     await tester.tap(find.byKey(ValueKey('LoginTab_k8wn')));
     await tester.enterText(
         find.byKey(ValueKey('Login_Email_483x')), 'ethan.demelo2000@gmail.com');
@@ -49,7 +50,6 @@ void main() async {
     await tester.tap(find.byKey(ValueKey('Button_v4uz')));
     await tester.enterText(
         find.byKey(ValueKey('PostBody_02v4')), 'This is a robo test');
-    await tester.tap(find.byKey(ValueKey('Button_i4o9')));
   });
 
   testWidgets('US1 Create Account', (WidgetTester tester) async {
