@@ -320,6 +320,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                           child: SizedBox(
                                             width: double.infinity,
                                             child: TextFormField(
+                                              key:
+                                                  const ValueKey('SignUp_Email_ptei'),
                                               controller: _model
                                                   .signUpEmailTextController,
                                               focusNode:
@@ -415,6 +417,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                           child: SizedBox(
                                             width: double.infinity,
                                             child: TextFormField(
+                                              key: const ValueKey(
+                                                  'SignUp_Password_70vb'),
                                               controller: _model
                                                   .signUpPasswordTextController,
                                               focusNode: _model
@@ -529,6 +533,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                           child: SizedBox(
                                             width: double.infinity,
                                             child: TextFormField(
+                                              key: const ValueKey(
+                                                  'SignUp_ConfirmPassword_5an3'),
                                               controller: _model
                                                   .signUpConfirmPasswordTextController,
                                               focusNode: _model
@@ -911,6 +917,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                               animationsMap['buttonOnPageLoadAnimation1']!),
                         if (_model.tabBarCurrentIndex == 0)
                           FFButtonWidget(
+                            key: const ValueKey('SignUp_Button_u7bb'),
                             onPressed: () async {
                               logFirebaseEvent(
                                   'LOGIN_PAGE_PAGE_SignUp_Button_ON_TAP');
@@ -920,7 +927,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 return;
                               }
                               logFirebaseEvent('SignUp_Button_auth');
-                              GoRouter.of(context).prepareAuthEvent();
+                              GoRouter.of(context).prepareAuthEvent(true);
                               if (_model.signUpPasswordTextController.text !=
                                   _model.signUpConfirmPasswordTextController
                                       .text) {
@@ -947,7 +954,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                               logFirebaseEvent('SignUp_Button_navigate_to');
 
                               context.goNamedAuth(
-                                  'EditProfilePage', context.mounted);
+                                'EditProfilePage',
+                                context.mounted,
+                                ignoreRedirect: true,
+                              );
                             },
                             text: 'Sign Up',
                             options: FFButtonOptions(

@@ -194,7 +194,10 @@ int removeOneCount(int numLikes) {
   return (numLikes - 1);
 }
 
-String getUsernameWithoutAt(String username) {
+String? getUsernameWithoutAt(String? username) {
+  if (username == null) {
+    return null;
+  }
   // this relies on "username" being a valid username starting with @
   // don't call this with anything else lol
   if (username[0] == '@')

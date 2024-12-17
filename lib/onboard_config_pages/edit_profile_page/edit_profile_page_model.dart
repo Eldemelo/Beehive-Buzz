@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
   ///  Local state fields for this page.
 
-  String usernameWithAt = 'username';
+  String? usernameWithAt = 'username';
 
   bool usernameFocused = false;
 
@@ -46,9 +46,11 @@ class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
     if (val.isEmpty) {
       return 'Requires at least 1 characters.';
     }
-
+    if (val.length > 16) {
+      return 'Username must be 16 characters max.';
+    }
     if (!RegExp(kTextValidatorUsernameRegex).hasMatch(val)) {
-      return 'Invalid Username';
+      return 'Must be letters/numbers/-/_ starting with a letter.';
     }
     return null;
   }

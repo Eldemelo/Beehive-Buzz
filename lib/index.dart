@@ -13,3 +13,5 @@ export '/main_pages/user_profile_page/user_profile_page_widget.dart'
 export '/create_pages/new_event/new_event_widget.dart' show NewEventWidget;
 export '/main_pages/comments_page/comments_page_widget.dart'
     show CommentsPageWidget;
+export '/onboard_config_pages/manage_account/manage_account_widget.dart'
+    show ManageAccountWidget;

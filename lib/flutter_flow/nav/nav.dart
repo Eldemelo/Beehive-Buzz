@@ -150,6 +150,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               ParamType.int,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'manageAccount',
+          path: '/manageAccount',
+          builder: (context, params) => const ManageAccountWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

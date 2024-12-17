@@ -374,16 +374,7 @@ class _UserProfilePageWidgetState extends State<UserProfilePageWidget>
                                   'USER_PROFILE_Icon_1rboknie_ON_TAP');
                               logFirebaseEvent('Icon_navigate_to');
 
-                              context.pushNamed(
-                                'EditProfilePage',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: const TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType:
-                                        PageTransitionType.rightToLeft,
-                                  ),
-                                },
-                              );
+                              context.pushNamed('EditProfilePage');
                             },
                             child: Icon(
                               Icons.edit,
