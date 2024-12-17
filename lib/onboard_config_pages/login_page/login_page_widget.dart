@@ -862,7 +862,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       children: [
                         if (_model.tabBarCurrentIndex == 1)
                           FFButtonWidget(
-                            key: const ValueKey('Login_Button_udfc'),
                             onPressed: () async {
                               logFirebaseEvent(
                                   'LOGIN_PAGE_PAGE_Login_Button_ON_TAP');

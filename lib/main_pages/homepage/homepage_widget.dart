@@ -344,6 +344,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                               child: Container(
                                 decoration: const BoxDecoration(),
                                 child: FFButtonWidget(
+                                  key: const ValueKey('Button_v4uz'),
                                   onPressed: () async {
                                     logFirebaseEvent(
                                         'HOMEPAGE_PAGE_NEW_POST_BTN_ON_TAP');
@@ -362,6 +363,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                   },
                                   text: 'New Post',
                                   icon: const Icon(
+                                    key: ValueKey('Button_v4uz'),
                                     Icons.article,
                                     size: 30.0,
                                   ),
